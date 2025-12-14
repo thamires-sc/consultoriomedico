@@ -1,0 +1,41 @@
+{% extends "base.html" %} 
+{% block title %}Médicos{% endblock %}
+
+{% block content %}
+    <h2>Lista de Médicos</h2>
+    <p><a href="{{ url_for('novo_medico') }}">Cadastrar Novo Médico</a></p>
+
+    {% if medicos %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CRM</th>
+                <th>Telefone</th>
+                <th>Especialidade</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for medico in medicos %}
+            <tr>
+                <td>{{ medico.id_medico }}</td>
+                <td>{{ medico.nome }}</td>
+                <td>{{ medico.crm }}</td>
+                <td>{{ medico.telefone }}</td>
+                <td>{{ medico.especialidade }}</td> 
+                <td>
+                    <a href="{{ url_for('editar_medico', id_medico=medico.id_medico) }}">Editar</a> |
+                    <a href="{{ url_for('deletar_medico', id_medico=medico.id_medico) }}" 
+                       onclick="return confirm('Tem certeza que deseja excluir {{ medico.nome }}?');">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Nenhum médico cadastrado.</p>
+    {% endif %}
+
+{% endblock %}

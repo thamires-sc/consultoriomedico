@@ -1,0 +1,39 @@
+{% extends "base.html" %} 
+{% block title %}Convênios{% endblock %}
+
+{% block content %}
+    <h2>Lista de Convênios</h2>
+    <p><a href="{{ url_for('novo_convenio') }}">Cadastrar Novo Convênio</a></p>
+
+    {% if convenios %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CNPJ</th>
+                <th>Contato</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for convenio in convenios %}
+            <tr>
+                <td>{{ convenio.id_convenio }}</td>
+                <td>{{ convenio.nome }}</td>
+                <td>{{ convenio.cnpj }}</td>
+                <td>{{ convenio.contato }}</td>
+                <td>
+                    <a href="{{ url_for('editar_convenio', id_convenio=convenio.id_convenio) }}">Editar</a> |
+                    <a href="{{ url_for('deletar_convenio', id_convenio=convenio.id_convenio) }}" 
+                       onclick="return confirm('Tem certeza que deseja excluir {{ convenio.nome }}?');">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Nenhum convênio cadastrado.</p>
+    {% endif %}
+
+{% endblock %}

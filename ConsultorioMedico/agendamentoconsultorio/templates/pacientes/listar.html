@@ -1,0 +1,45 @@
+{% extends "base.html" %} 
+{% block title %}Pacientes{% endblock %}
+
+{% block content %}
+    <h2>Lista de Pacientes</h2>
+    <p><a href="{{ url_for('novo_paciente') }}">Cadastrar Novo Paciente</a></p>
+
+    {% if pacientes %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Data Nasc.</th>
+                <th>Telefone</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paciente in pacientes %}
+            <tr>
+                <td>{{ paciente.id_paciente }}</td>
+                <td>{{ paciente.nome }}</td>
+                <td>{{ paciente.cpf }}</td>
+                <td> 
+                    {% if paciente.data_nascimento %}
+                        {{ paciente.data_nascimento[8:10] }}/{{ paciente.data_nascimento[5:7] }}/{{ paciente.data_nascimento[0:4] }}
+                    {% endif %}
+                </td>
+                <td>{{ paciente.telefone }}</td>
+                <td>
+                    <a href="{{ url_for('editar_paciente', id_paciente=paciente.id_paciente) }}">Editar</a> |
+                    <a href="{{ url_for('deletar_paciente', id_paciente=paciente.id_paciente) }}" 
+                       onclick="return confirm('Tem certeza?');">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Nenhum paciente cadastrado.</p>
+    {% endif %}
+
+{% endblock %}
