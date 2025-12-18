@@ -4,7 +4,7 @@
 {% block content %}
     <h2>{{ titulo }}</h2>
 
-    <form method="POST" action="{{ url_for('salvar_convenio') }}">
+    <form method="POST" action="{{ url_for('convenio.salvar') }}">
         
         <input type="hidden" name="id_convenio" value="{{ convenio.id_convenio or '' }}">
 
@@ -41,7 +41,8 @@
                 required>
         </div>
         
-        <button type="submit">Salvar Convênio</button>
-        <a href="{{ url_for('listar_convenios') }}">Cancelar</a>
+        <button type="submit" class="btn-cadastrar" style="border: none; cursor: pointer;">Salvar Convênio</button>
+        
+        <a href="{{ url_for('convenio.listar') }}">Cancelar</a>
     </form>
 {% endblock %}

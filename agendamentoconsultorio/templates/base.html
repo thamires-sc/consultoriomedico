@@ -11,10 +11,10 @@
     <header>
         <h1>Sistema de Gerenciamento de Consultório</h1>
         <nav>
-            <a href="{{ url_for('listar_pacientes') }}">Pacientes</a> |
-            <a href="{{ url_for('listar_convenios') }}">Convênios</a> |
-            <a href="{{ url_for('listar_medicos') }}">Médicos</a> | 
-            <a href="{{ url_for('listar_especialidades') }}">Especialidades</a>
+            <a href="{{ url_for('paciente.listar') }}">Pacientes</a> |
+            <a href="{{ url_for('convenio.listar') }}">Convênios</a> |
+            <a href="{{ url_for('medico.listar') }}">Médicos</a> | 
+            <a href="{{ url_for('especialidade.listar') }}">Especialidades</a>
         </nav>
     </header>
     <main>

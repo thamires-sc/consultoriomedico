@@ -1,10 +1,5 @@
 from db_connection import get_db_connection
-
-class Especialidade:
-
-    def __init__(self, id_especialidade, nome):
-        self.id_especialidade = id_especialidade
-        self.nome = nome
+from models.especialidade import Especialidade
 
 class EspecialidadeDAO:
     def buscar_todos(self):

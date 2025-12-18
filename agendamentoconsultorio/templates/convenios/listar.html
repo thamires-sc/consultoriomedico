@@ -3,7 +3,8 @@
 
 {% block content %}
     <h2>Lista de Convênios</h2>
-    <p><a href="{{ url_for('novo_convenio') }}" class="btn-cadastrar">Cadastrar Novo Convênio</a></p>
+    
+    <p><a href="{{ url_for('convenio.novo') }}" class="btn-cadastrar">Cadastrar Novo Convênio</a></p>
 
     {% if convenios %}
     <table>
@@ -24,8 +25,9 @@
                 <td>{{ convenio.cnpj }}</td>
                 <td>{{ convenio.contato }}</td>
                 <td>
-                    <a href="{{ url_for('editar_convenio', id_convenio=convenio.id_convenio) }}">Editar</a> |
-                    <a href="{{ url_for('deletar_convenio', id_convenio=convenio.id_convenio) }}" 
+                    <a href="{{ url_for('convenio.editar', id_convenio=convenio.id_convenio) }}" class="btn-editar">Editar</a> |
+                    <a href="{{ url_for('convenio.deletar', id_convenio=convenio.id_convenio) }}" 
+                       class="btn-excluir"
                        onclick="return confirm('Tem certeza que deseja excluir {{ convenio.nome }}?');">Excluir</a>
                 </td>
             </tr>

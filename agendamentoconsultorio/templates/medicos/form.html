@@ -4,7 +4,7 @@
 {% block content %}
     <h2>{{ titulo }}</h2>
 
-    <form method="POST" action="{{ url_for('salvar_medico') }}">
+    <form method="POST" action="{{ url_for('medico.salvar') }}">
         
         <input type="hidden" name="id_medico" value="{{ medico.id_medico or '' }}">
 
@@ -17,7 +17,7 @@
                 maxlength="150"
                 value="{{ medico.nome or '' }}"
                 required> 
-            </div>
+        </div>
 
         <div>
             <label for="crm">CRM:</label>
@@ -28,7 +28,7 @@
                 maxlength="50"
                 value="{{ medico.crm or '' }}"
                 required>
-            </div>
+        </div>
         
         <div>
             <label for="telefone">Telefone:</label>
@@ -39,7 +39,7 @@
                 maxlength="30"
                 value="{{ medico.telefone or '' }}"
                 required>
-            </div>
+        </div>
 
         <div>
             <label for="especialidade_id">Especialidade:</label>
@@ -52,9 +52,10 @@
                     </option>
                 {% endfor %}
             </select>
-            </div>
+        </div>
         
-        <button type="submit">Salvar Médico</button>
-        <a href="{{ url_for('listar_medicos') }}">Cancelar</a>
+        <button type="submit" class="btn-cadastrar" style="border: none; cursor: pointer;">Salvar Médico</button>
+        
+        <a href="{{ url_for('medico.listar') }}">Cancelar</a>
     </form>
 {% endblock %}

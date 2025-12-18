@@ -4,7 +4,7 @@
 {% block content %}
     <h2>{{ titulo }}</h2>
 
-    <form method="POST" action="{{ url_for('salvar_paciente') }}">
+    <form method="POST" action="{{ url_for('paciente.salvar') }}">
         
         <input type="hidden" name="id_paciente" value="{{ paciente.id_paciente or '' }}">
 
@@ -17,7 +17,7 @@
                 maxlength="150"
                 value="{{ paciente.nome or '' }}"
                 required> 
-            </div>
+        </div>
 
         <div>
             <label for="cpf">CPF (11 dígitos):</label>
@@ -30,7 +30,7 @@
                 title="Formato: 000.000.000-00"
                 value="{{ paciente.cpf or '' }}"
                 required>
-            </div>
+        </div>
 
         <div>
             <label for="data_nascimento">Data de Nascimento:</label>
@@ -40,7 +40,7 @@
                 name="data_nascimento" 
                 value="{{ paciente.data_nascimento or '' }}"
                 required> 
-            </div>
+        </div>
         
         <div>
             <label for="telefone">Telefone:</label>
@@ -52,8 +52,23 @@
                 value="{{ paciente.telefone or '' }}"
                 required>
         </div>
+
+        <div>
+            <label for="convenio_id">Convênio:</label>
+            <select id="convenio_id" name="convenio_id" required>
+                {% for convenio in convenios %}
+                    <option 
+                        value="{{ convenio.id_convenio }}"
+                        {% if convenio.id_convenio == paciente.convenio_id %}selected{% endif %}>
+                        {{ convenio.nome }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
         
-        <button type="submit">Salvar</button>
-        <a href="{{ url_for('listar_pacientes') }}">Cancelar</a>
+        <br>
+        <button type="submit" class="btn-cadastrar" style="border: none; cursor: pointer;">Salvar Paciente</button>
+        
+        <a href="{{ url_for('paciente.listar') }}">Cancelar</a>
     </form>
 {% endblock %}

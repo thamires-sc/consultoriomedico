@@ -1,16 +1,7 @@
 from db_connection import get_db_connection
 import mysql.connector
+from models.medico import Medico
 
-
-class Medico:
-    def __init__(self, id_medico, nome, crm, telefone, especialidade_id=None):
-        self.id_medico = id_medico
-        self.nome = nome
-        self.crm = crm
-        self.telefone = telefone
-        self.especialidade_id = especialidade_id
-        # Campo extra para armazenar o nome da especialidade para exibição
-        self.especialidade = '' 
 
 class MedicoDAO:
     
