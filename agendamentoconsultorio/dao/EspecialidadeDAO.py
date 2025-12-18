@@ -40,7 +40,7 @@ class EspecialidadeDAO:
             cursor.execute(sql_check, (especialidade_obj.nome,))
             if cursor.fetchone():
                 print("Erro: Especialidade já cadastrada.")
-                return False # Já existe
+                return False 
             
             # 2. Se não existir, faz a inserção
             sql_insert = "INSERT INTO Especialidade (Especialidade) VALUES (%s)"

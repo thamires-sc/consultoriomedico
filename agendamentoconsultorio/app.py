@@ -150,24 +150,21 @@ def deletar_convenio(id_convenio):
     return redirect(url_for('listar_convenios'))
 
 # ====================================================================
-# ESPECIALIDADES (Apenas Listar e Criar)
+# ESPECIALIDADES 
 # ====================================================================
 
-# Lista as especialidades (Padrão: pasta especialidade/listar.html)
 @app.route('/especialidades')
 def listar_especialidades():
     lista = especialidade_dao.buscar_todos()
     return render_template('especialidade/listar.html', especialidades=lista)
 
-# Exibe o formulário de nova especialidade (Padrão: pasta especialidade/form.html)
 @app.route('/especialidades/novo')
 def nova_especialidade():
     return render_template('especialidade/form.html', titulo='Nova Especialidade')
 
-# Processa o salvamento da especialidade
 @app.route('/especialidades/salvar', methods=['POST'])
 def cadastrar_especialidade():
-    nome = request.form.get('nome_especialidade').strip() # .strip() remove espaços extras
+    nome = request.form.get('nome_especialidade').strip() 
     if nome:
         nova_esp = Especialidade(id_especialidade=None, nome=nome)
         if especialidade_dao.criar(nova_esp):

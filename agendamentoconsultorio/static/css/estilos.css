@@ -33,7 +33,7 @@ table {
 }
 
 th {
-    background-color: #616161; /* Azul escuro combinando com seu header */
+    background-color: #616161; 
     color: white;
     text-align: left;
     padding: 15px;
@@ -46,18 +46,18 @@ td {
     color: #444;
 }
 
-/* Efeito Zebrado */
+
 tbody tr:nth-child(even) {
     background-color: #f8f9fa;
 }
 
-/* Efeito ao passar o mouse na linha */
+
 tbody tr:hover {
     background-color: #f1f1f1;
     transition: 0.2s;
 }
 
-/* Estilo para Formulários */
+
 form {
     width: 50%;
     margin: 20px auto;
@@ -82,11 +82,11 @@ input[type="text"], input[type="date"], input[type="tel"] {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+    box-sizing: border-box;
 }
 
 button[type="submit"] {
-    background-color: #28a745; /* Verde para salvar */
+    background-color: #28a745; 
     color: white;
     padding: 10px 15px;
     border: none;
@@ -106,7 +106,6 @@ button[type="submit"] {
     transition: background-color 0.3s ease;
 }
 
-/* Efeito ao passar o mouse */
 .btn-cadastrar:hover {
     background-color: #218838;
     color: #fff;
