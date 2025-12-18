@@ -1,0 +1,60 @@
+{% extends "base.html" %} 
+{% block title %}{{ titulo }}{% endblock %}
+
+{% block content %}
+    <h2>{{ titulo }}</h2>
+
+    <form method="POST" action="{{ url_for('salvar_medico') }}">
+        
+        <input type="hidden" name="id_medico" value="{{ medico.id_medico or '' }}">
+
+        <div>
+            <label for="nome">Nome do Médico:</label>
+            <input 
+                type="text" 
+                id="nome" 
+                name="nome" 
+                maxlength="150"
+                value="{{ medico.nome or '' }}"
+                required> 
+            </div>
+
+        <div>
+            <label for="crm">CRM:</label>
+            <input 
+                type="text" 
+                id="crm" 
+                name="crm" 
+                maxlength="50"
+                value="{{ medico.crm or '' }}"
+                required>
+            </div>
+        
+        <div>
+            <label for="telefone">Telefone:</label>
+            <input 
+                type="tel" 
+                id="telefone" 
+                name="telefone" 
+                maxlength="30"
+                value="{{ medico.telefone or '' }}"
+                required>
+            </div>
+
+        <div>
+            <label for="especialidade_id">Especialidade:</label>
+            <select id="especialidade_id" name="especialidade_id" required>
+                {% for especialidade in especialidades %}
+                    <option 
+                        value="{{ especialidade.id_especialidade }}"
+                        {% if especialidade.id_especialidade == medico.especialidade_id %}selected{% endif %}>
+                        {{ especialidade.nome }}
+                    </option>
+                {% endfor %}
+            </select>
+            </div>
+        
+        <button type="submit">Salvar Médico</button>
+        <a href="{{ url_for('listar_medicos') }}">Cancelar</a>
+    </form>
+{% endblock %}

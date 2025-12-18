@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Lista de Especialidades</h2>
+<a href="{{ url_for('nova_especialidade') }}" class="btn-cadastrar">Cadastrar Nova Especialidade</a>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome da Especialidade</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for esp in especialidades %}
+        <tr>
+            <td>{{ esp.id_especialidade }}</td>
+            <td>{{ esp.nome }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

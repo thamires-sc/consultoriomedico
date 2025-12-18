@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Cadastrar Especialidade</h2>
+
+<form action="{{ url_for('cadastrar_especialidade') }}" method="POST">
+    <div class="form-group">
+        <label for="nome_especialidade">Nome da Especialidade:</label>
+        <input type="text" name="nome_especialidade" class="form-control" required placeholder="Ex: Cardiologia">
+    </div>
+    <button type="submit" class="btn btn-success mt-2">Salvar</button>
+    <a href="{{ url_for('listar_especialidades') }}" class="btn btn-secondary mt-2">Cancelar</a>
+</form>
+{% endblock %}

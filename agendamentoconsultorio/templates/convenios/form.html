@@ -1,0 +1,47 @@
+{% extends "base.html" %} 
+{% block title %}{{ titulo }}{% endblock %}
+
+{% block content %}
+    <h2>{{ titulo }}</h2>
+
+    <form method="POST" action="{{ url_for('salvar_convenio') }}">
+        
+        <input type="hidden" name="id_convenio" value="{{ convenio.id_convenio or '' }}">
+
+        <div>
+            <label for="nome">Nome do Convênio:</label>
+            <input 
+                type="text" 
+                id="nome" 
+                name="nome" 
+                maxlength="150"
+                value="{{ convenio.nome or '' }}"
+                required> 
+        </div>
+
+        <div>
+            <label for="cnpj">CNPJ:</label>
+            <input 
+                type="text" 
+                id="cnpj" 
+                name="cnpj" 
+                maxlength="20"
+                value="{{ convenio.cnpj or '' }}"
+                required>
+        </div>
+        
+        <div>
+            <label for="contato">Contato/Telefone:</label>
+            <input 
+                type="text" 
+                id="contato" 
+                name="contato" 
+                maxlength="100"
+                value="{{ convenio.contato or '' }}"
+                required>
+        </div>
+        
+        <button type="submit">Salvar Convênio</button>
+        <a href="{{ url_for('listar_convenios') }}">Cancelar</a>
+    </form>
+{% endblock %}
